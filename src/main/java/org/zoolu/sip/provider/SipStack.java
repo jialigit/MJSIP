@@ -36,7 +36,7 @@ import java.util.Vector;
 
 /** SipStack collects all static attributes used by the sip stack.
   * <p>
-  * SipStack attributes are: the default SIP port, deafult supported transport protocols,
+  * SipStack attributes are: the default SIP port, default supported transport protocols,
   * timeouts, log configuration, etc.
   */
 public class SipStack extends Configure
@@ -52,7 +52,7 @@ public class SipStack extends Configure
    // *********************** software release ***********************
 
    /** Version */
-   public static final String version="1.7";
+   public static final String version="1.7.1";
    /** Release */
    public static final String release="mjsip "+version;
    /** Authors */

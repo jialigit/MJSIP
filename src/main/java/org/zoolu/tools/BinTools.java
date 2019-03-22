@@ -80,7 +80,7 @@ public class BinTools
    /** 0x00000000FFFFFFFF */
    public static final long OxFFFFFFFF=((long)1<<32)-1;
 
-   /** Gets the unsigned representatin of a 32-bit word , returned as a <b>long</b>. The same as getting <i>(long)n&0x00000000FFFFFFFF</i>. */
+   /** Gets the unsigned representatin of a 32-bit word , returned as a <b>long</b>. The same as getting <i>(long)n&amp;0x00000000FFFFFFFF</i>. */
    public static long uWord(int n)
    {  //long Ox1OOOOOOOO=(long)1<<32;
       //return (long)(((long)n+Ox1OOOOOOOO)&(Ox1OOOOOOOO-1));

@@ -25,11 +25,11 @@ package org.zoolu.tools;
 
 
 /** ContinuousPipe.
-  * <p/>
+  * <p>
   * A ContinuousPipe is a FIFO line, where bytes can be written in and read out.
-  * <br/>
+  * <br></br>
   * If a byte is written into a full pipe, the first byte is first removed.
-  * <br/>
+  * <br></br>
   * If a byte is read from an empty pipe, a zero-value byte is read.
   */
 public class ContinuousPipe extends Pipe

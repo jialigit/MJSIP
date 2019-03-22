@@ -33,6 +33,8 @@ import java.net.URL;
 public class Configure
 {
 
+	// TODO: rewrite and use Jaxb
+	
    /** String 'NONE' used as undefined value (i.e. null). */
    public static String NONE="NONE";
 
