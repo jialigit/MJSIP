@@ -22,11 +22,11 @@
 package org.zoolu.sip.call;
 
 
-import org.zoolu.sip.provider.*;
-import org.zoolu.sip.header.AcceptHeader;
-import org.zoolu.sip.header.AllowHeader;
+import org.zoolu.sip.message.Message;
+import org.zoolu.sip.message.MessageFactory;
+import org.zoolu.sip.provider.SipProvider;
+import org.zoolu.sip.provider.SipProviderListener;
 import org.zoolu.sip.transaction.TransactionServer;
-import org.zoolu.sip.message.*;
 import org.zoolu.tools.Log;
 
 

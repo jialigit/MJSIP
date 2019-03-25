@@ -51,7 +51,7 @@ public class ExtendedInviteDialog extends org.zoolu.sip.dialog.InviteDialog
    ExtendedInviteDialogListener ext_listener;
    
    /** Acive transactions. */
-   Hashtable transactions;
+   Hashtable<TransactionId, Transaction> transactions;
  
    
    /** User name. */

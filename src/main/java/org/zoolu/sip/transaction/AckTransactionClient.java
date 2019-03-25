@@ -25,11 +25,8 @@ package org.zoolu.sip.transaction;
 
 
 
-import org.zoolu.sip.address.SipURL;
-import org.zoolu.sip.provider.*;
-import org.zoolu.sip.message.*;
-import org.zoolu.tools.Timer;
-import org.zoolu.tools.TimerListener;
+import org.zoolu.sip.message.Message;
+import org.zoolu.sip.provider.SipProvider;
 import org.zoolu.tools.Log;
 
 

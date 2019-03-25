@@ -23,13 +23,6 @@
 
 package org.zoolu.tools;
 
-
-
-import java.io.*;
-import java.util.Date;
-
-
-
 /** Class Logger enriches the access to a Log.
   * It supports a log level offset and a log header tag,
   * and provides more printing methods.

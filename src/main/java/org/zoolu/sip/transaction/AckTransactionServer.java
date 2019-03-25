@@ -24,12 +24,13 @@
 package org.zoolu.sip.transaction;
 
 
-import org.zoolu.sip.address.SipURL;
-import org.zoolu.sip.provider.*;
-import org.zoolu.sip.message.*;
-import org.zoolu.tools.Timer;
-import org.zoolu.tools.TimerListener;
+import org.zoolu.sip.message.Message;
+import org.zoolu.sip.provider.SipProvider;
+import org.zoolu.sip.provider.SipProviderListener;
+import org.zoolu.sip.provider.SipStack;
+import org.zoolu.sip.provider.TransportConnId;
 import org.zoolu.tools.Log;
+import org.zoolu.tools.Timer;
 
 
 /** ACK server transaction should follow an INVITE server transaction within an INVITE Dialog in a SIP UAC.

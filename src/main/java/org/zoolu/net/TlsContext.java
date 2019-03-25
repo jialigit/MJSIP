@@ -25,14 +25,12 @@ package org.zoolu.net;
 
 
 
-import java.io.*;
-import java.security.KeyStore;
+import java.io.File;
+import java.io.FileInputStream;
 import java.security.Key;
-import java.security.KeyFactory;
+import java.security.KeyStore;
 import java.security.cert.Certificate;
 import java.security.cert.CertificateFactory;
-import java.security.spec.PKCS8EncodedKeySpec;
-import javax.net.ssl.SSLSocket;
 
 
 

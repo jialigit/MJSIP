@@ -71,7 +71,7 @@ public class ExtendedCall extends Call implements ExtendedInviteDialogListener
    }
 
 
-   /** Creates a new ExtendedCall for the already received INVITE request <i>invite</i>. */
+   /** Creates a new ExtendedCall for the already received INVITE request <i>invite</i>. It also sends out the 100-trying. */
    public ExtendedCall(SipProvider sip_provider, Message invite, ExtendedCallListener call_listener)
    {  super(sip_provider,invite.getToHeader().getNameAddress(),call_listener);
       initExtendedCall(null,null,null,call_listener);

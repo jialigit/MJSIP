@@ -346,9 +346,9 @@ public class SipProvider implements Configurable, TransportListener
 
 
    /** Stops the transport services. */ 
-   private void stopSipTrasport()
+   private void stopSipTransport()
    {  if (sip_transports!=null) 
-      {  for(Enumeration e=sip_transports.keys(); e.hasMoreElements(); )
+      {  for( Enumeration e = sip_transports.keys(); e.hasMoreElements(); )
          {  String proto=(String)e.nextElement();
             Transport transp=(Transport)sip_transports.get(proto);
             printLog(proto+" is going down",Log.LEVEL_LOWER);
@@ -386,7 +386,7 @@ public class SipProvider implements Configurable, TransportListener
    /** Stops the SipProviders. */ 
    public synchronized void halt()
    {  printLog("halt: SipProvider is going down",Log.LEVEL_MEDIUM);
-      stopSipTrasport();
+      stopSipTransport();
       sip_listeners=new Hashtable();
       promiscuous_listeners=new Vector();
       exception_listeners=new Vector();
