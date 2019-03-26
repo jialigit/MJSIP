@@ -25,20 +25,25 @@ package org.zoolu.sip.provider;
 
 
 
-import org.zoolu.net.*;
-import org.zoolu.sip.header.*;
-import org.zoolu.sip.message.Message;
-import org.zoolu.sip.address.*;
-import org.zoolu.sip.transaction.Transaction;
-import org.zoolu.tools.*;
-
+import java.io.IOException;
+import java.util.Date;
+import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.Vector;
-import java.util.Enumeration;
-import java.util.Date;
-import java.io.IOException;
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
+
+import org.zoolu.net.IpAddress;
+import org.zoolu.sip.address.SipURL;
+import org.zoolu.sip.header.ViaHeader;
+import org.zoolu.sip.message.Message;
+import org.zoolu.tools.Configurable;
+import org.zoolu.tools.Configure;
+import org.zoolu.tools.DateFormat;
+import org.zoolu.tools.ExceptionPrinter;
+import org.zoolu.tools.Log;
+import org.zoolu.tools.Parser;
+import org.zoolu.tools.Random;
+import org.zoolu.tools.RotatingLog;
+import org.zoolu.tools.SimpleDigest;
 
 
 
@@ -204,10 +209,10 @@ public class SipProvider implements Configurable, TransportListener
    Hashtable sip_listeners=new Hashtable();
    
    /** Vector of promiscuous listeners */
-   Vector promiscuous_listeners=new Vector();
+   Vector<SipProviderListener> promiscuous_listeners=new Vector();
 
    /** Vector of exception listeners */
-   Vector exception_listeners=new Vector();
+   Vector<SipProviderExceptionListener> exception_listeners=new Vector();
 
 
 
@@ -388,7 +393,7 @@ public class SipProvider implements Configurable, TransportListener
    {  printLog("halt: SipProvider is going down",Log.LEVEL_MEDIUM);
       stopSipTransport();
       sip_listeners=new Hashtable();
-      promiscuous_listeners=new Vector();
+      promiscuous_listeners=new Vector<SipProviderListener>();
       exception_listeners=new Vector();
    }
 
@@ -923,7 +928,7 @@ public class SipProvider implements Configurable, TransportListener
          
          // is there any listeners?
          if (sip_listeners.size()==0)
-         {  printLog("no listener found: meesage discarded.",Log.LEVEL_HIGH);
+         {  printLog("no listener found: message discarded.",Log.LEVEL_HIGH);
             return;
          }
 

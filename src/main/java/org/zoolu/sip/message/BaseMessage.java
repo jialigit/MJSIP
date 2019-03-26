@@ -382,8 +382,8 @@ public abstract class BaseMessage extends org.zoolu.tools.MonitoredObject
    }
 
    /** Gets a Vector of all Headers of specified name (returns empty Vector if no Header is found). */
-   public Vector getHeaders(String hname)
-   {  Vector v=new Vector();
+   public Vector<Header> getHeaders(String hname)
+   {  Vector<Header> v=new Vector<Header>();
       SipParser par=new SipParser(message);
       Header h;
       while ((h=par.getHeader(hname))!=null)
@@ -654,9 +654,11 @@ public abstract class BaseMessage extends org.zoolu.tools.MonitoredObject
    }
    /** Gets a MultipleHeader of Contacts. */
    public MultipleHeader getContacts()
-   {  Vector v=getHeaders(SipHeaders.Contact);
-      if (v.size()>0) return new MultipleHeader(v);
-      else return null;
+   {  Vector<Header> v=getHeaders(SipHeaders.Contact);
+      if (v.size()>0) 
+    	  return new MultipleHeader(v);
+      else 
+    	  return null;
    }   
    /** Adds Contacts. */
    public void addContacts(MultipleHeader contacts, boolean top) 
@@ -733,12 +735,16 @@ public abstract class BaseMessage extends org.zoolu.tools.MonitoredObject
    {  //Header h=getHeader(SipHeaders.Route);
       //if (h==null) return null; else return new RouteHeader(h);
       MultipleHeader mh=getRoutes();
-      if (mh==null) return null; return new RouteHeader(mh.getTop());
+      if (mh==null) 
+    	  return null; 
+      return new RouteHeader(mh.getTop());
    } 
    /** Gets the whole route. */
    public MultipleHeader getRoutes()
-   {  Vector v=getHeaders(SipHeaders.Route);
-      if (v.size()>0) return new MultipleHeader(v);
+   {  
+	   Vector v=getHeaders(SipHeaders.Route);
+      if (v.size()>0) 
+    	  return new MultipleHeader(v);
       else return null;
    }
    /** Removes the top RouteHeader. */

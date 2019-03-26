@@ -77,6 +77,8 @@ public class Call extends org.zoolu.tools.MonitoredObject implements InviteDialo
    /** Internal call state. */
    protected int status;
    
+ 
+   
    protected static final int C_IDLE=0;   
    protected static final int C_INCOMING=1;
    protected static final int C_OUTGOING=2;
@@ -84,7 +86,7 @@ public class Call extends org.zoolu.tools.MonitoredObject implements InviteDialo
    protected static final int C_CLOSED=9;
       
    /** Gets the dialog state */
-   protected String getStatus()
+   public String getStatus()
    {  switch (status)
       {  case C_IDLE       : return "C_IDLE";
          case C_INCOMING   : return "C_INCOMING";   
