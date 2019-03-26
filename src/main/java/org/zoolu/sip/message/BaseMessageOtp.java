@@ -34,7 +34,7 @@ import java.util.*;
 
 /** Class BaseMessageOtp implements a generic SIP Message.
   * It extends class BaseMessage adding one-time-parsing functionality
-  * (it parses the entire Message just when it is costructed).
+  * (it parses the entire Message just when it is constructed).
   * <p/> At the contrary, class BaseMessage works in a just-in-time manner
   * (it parses the message each time a particular header field is requested).
   */
@@ -50,14 +50,14 @@ public abstract class BaseMessageOtp extends BaseMessage
    protected StatusLine status_line=null;
 
    /** Vector of all header fields */
-   protected Vector headers=null;
+   protected Vector<Header> headers=null;
    /** Message body */
    protected String body=null;
 
 
    /** Costructs a new empty Message. */
    public BaseMessageOtp()
-   {  headers=new Vector();
+   {  headers=new Vector<>();
    }
       
    /** Costructs a new Message. */
@@ -70,12 +70,12 @@ public abstract class BaseMessageOtp extends BaseMessage
    {  parseIt(new String(packet.getData(),packet.getOffset(),packet.getLength()));
    }
 
-   /** Costructs a new Message. */
+   /** Constructs a new Message. */
    public BaseMessageOtp(String str)
    {  parseIt(str);
    }
 
-   /** Costructs a new Message. */
+   /** Constructs a new Message. */
    public BaseMessageOtp(BaseMessageOtp msg)
    {  remote_addr=msg.remote_addr;
       remote_port=msg.remote_port;
@@ -84,7 +84,7 @@ public abstract class BaseMessageOtp extends BaseMessage
       //packet_length=msg.packet_length;
       request_line=msg.request_line;
       status_line=msg.status_line;
-      headers=new Vector();
+      headers=new Vector<>();
       for (int i=0; i<msg.headers.size(); i++) headers.addElement(msg.headers.elementAt(i));
       body=msg.body;
    }
@@ -102,7 +102,7 @@ public abstract class BaseMessageOtp extends BaseMessage
          if (proto_version.equalsIgnoreCase(SIP_VERSION)) status_line=par.getStatusLine();
          else request_line=par.getRequestLine();
          
-         headers=new Vector();
+         headers=new Vector<>();
          Header h=par.getHeader();
          while (h!=null)
          {  headers.addElement(h);
@@ -231,8 +231,8 @@ public abstract class BaseMessageOtp extends BaseMessage
    }
 
    /** Gets a Vector of all Headers of specified name (Returns empty Vector if no Header is found). */
-   public Vector getHeaders(String hname)
-   {  Vector v=new Vector();
+   public Vector<Header> getHeaders(String hname)
+   {  Vector<Header> v=new Vector<>();
       for (int i=0; i<headers.size(); i++)
       {  Header hi=(Header)headers.elementAt(i);
          if (hname.equalsIgnoreCase(hi.getName())) v.addElement(hi);
@@ -257,7 +257,7 @@ public abstract class BaseMessageOtp extends BaseMessage
    }
    
    /** Adds a Vector of Headers at the top/bottom. */
-   public void addHeaders(Vector headers, boolean top) 
+   public void addHeaders(Vector<Header> headers, boolean top) 
    {  int pos=0;
       if (!top)
       {  pos=headers.size();
@@ -292,7 +292,7 @@ public abstract class BaseMessageOtp extends BaseMessage
       else
       {  int index=indexOfHeader(refer_hname);
          if (index<0) index=0;
-         Vector hs=mheader.getHeaders();
+         Vector<Header> hs=mheader.getHeaders();
          for (int k=0; k<hs.size(); k++) headers.insertElementAt(hs.elementAt(k),index+k);
       }
    }
@@ -312,7 +312,7 @@ public abstract class BaseMessageOtp extends BaseMessage
       else
       {  int index=indexOfHeader(refer_hname);
          if (index>=0) index++; else index=headers.size();
-         Vector hs=mheader.getHeaders();
+         Vector<Header> hs=mheader.getHeaders();
          for (int k=0; k<hs.size(); k++) headers.insertElementAt(hs.elementAt(k),index+k);
       }
    }
@@ -379,7 +379,7 @@ public abstract class BaseMessageOtp extends BaseMessage
             if (hname.equalsIgnoreCase(hi.getName()))
             {  if (not_found)
                {  // replace it
-                  Vector hs=mheader.getHeaders();
+                  Vector<Header> hs=mheader.getHeaders();
                   for (int k=0; k<hs.size(); k++) headers.insertElementAt(hs.elementAt(k),i+k);
                   not_found=false;
                   i+=hs.size()-1;

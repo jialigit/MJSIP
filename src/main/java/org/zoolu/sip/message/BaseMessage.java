@@ -399,7 +399,7 @@ public abstract class BaseMessage extends org.zoolu.tools.MonitoredObject
    }
 
    /** Adds a Vector of Headers at the top/bottom. */
-   public void addHeaders(Vector headers, boolean top) 
+   public void addHeaders(Vector<Header> headers, boolean top) 
    {  String str="";
       for (int i=0; i<headers.size(); i++) str+=((Header)headers.elementAt(i)).toString();
       addHeaders(str,top);
@@ -450,7 +450,8 @@ public abstract class BaseMessage extends org.zoolu.tools.MonitoredObject
    /** Adds Header before the first header <i>refer_header</i>
      * . <p>If there is no header of such type, it is added at top. */
    public void addHeaderBefore(Header new_header, String refer_header) 
-   {  addHeadersBefore(new_header.toString(),refer_header);
+   { 
+	   addHeadersBefore(new_header.toString(),refer_header);
    }
 
    /** Adds MultipleHeader(s) before the first header <i>refer_header</i>
@@ -978,12 +979,16 @@ public abstract class BaseMessage extends org.zoolu.tools.MonitoredObject
    public void setAllowHeader(AllowHeader h) 
    {  setHeader(h);
    } 
+   
    /** Gets AllowHeader. */
    public AllowHeader getAllowHeader()
    {  Header h=getHeader(SipHeaders.Allow);
-      if (h==null) return null;
-      else return new AllowHeader(h);
+      if (h==null) 
+    	  return null;
+      else 
+    	  return new AllowHeader(h);
    } 
+   
    /** Removes AllowHeader. */
    public void removeAllowHeader() 
    {  removeHeader(SipHeaders.Allow);
