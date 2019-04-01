@@ -22,11 +22,18 @@
 package org.zoolu.sound;
 
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+
+import javax.sound.sampled.AudioFormat;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.SourceDataLine;
+
 import org.zoolu.tools.Pipe;
 import org.zoolu.tools.PipeInputStream;
 import org.zoolu.tools.PipeOutputStream;
-import javax.sound.sampled.*;
-import java.io.*;
 
 
 /** SourceLineAudioOutputStream extends AudioOutputStream providing a useful API

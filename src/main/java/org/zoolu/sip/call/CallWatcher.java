@@ -24,9 +24,12 @@
 package org.zoolu.sip.call;
 
 
-import org.zoolu.sip.provider.*;
 import org.zoolu.sip.address.NameAddress;
-import org.zoolu.sip.message.*;
+import org.zoolu.sip.message.Message;
+import org.zoolu.sip.message.SipMethods;
+import org.zoolu.sip.provider.MethodId;
+import org.zoolu.sip.provider.SipProvider;
+import org.zoolu.sip.provider.SipProviderListener;
 
 
 /** CallWatcher listens for new incoming invite requests that create an Call.

@@ -22,9 +22,10 @@
 package org.zoolu.sound;
 
 
-import javax.sound.sampled.AudioFormat;
-import java.io.OutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
+
+import javax.sound.sampled.AudioFormat;
 
 
 /** AudioOutputStream has been created to provide a useful API for audio output

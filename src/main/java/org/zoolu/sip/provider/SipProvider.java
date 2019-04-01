@@ -946,7 +946,7 @@ public class SipProvider implements Configurable, TransportListener
             return;
          }
 
-         // look for a specifid listener:
+         // look for a specified listener:
 
          // try to look for a transaction
          SipId key;

@@ -24,8 +24,9 @@
 package org.zoolu.net;
 
 
-import org.zoolu.tools.BinTools;
 import java.util.Vector;
+
+import org.zoolu.tools.BinTools;
 
 
 /** Class JumboPacket provides methods for managing large datagrams

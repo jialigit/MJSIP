@@ -24,7 +24,7 @@
 package org.zoolu.tools;
 
 
-import java.util.*;
+import java.util.Vector;
 
 
 /** Class Parser allows the parsing of String objects.
@@ -380,53 +380,53 @@ public class Parser
    //********************** Vectors/arrays **********************
 
    /** Gets all integers separated by any char belonging to <i>separators</i> */
-   public Vector getIntVector(char[] separators)
-   {  Vector list=new Vector();
+   public Vector<Integer> getIntVector(char[] separators)
+   {  Vector<Integer> list=new Vector<>();
       do { list.addElement(Integer.valueOf(getWord(separators))); } while (hasMore());
       return list;
    }
    /** Gets all integers */
-   public Vector getIntVector()
-   {  Vector list=new Vector();
+   public Vector<Integer> getIntVector()
+   {  Vector<Integer> list=new Vector<>();
       do { list.addElement(Integer.valueOf(getString())); } while (hasMore());
       return list;
    }
    /** Gets all integers separated by any char belonging to <i>separators</i> */
    public int[] getIntArray(char[] separators)
-   {  Vector list=getIntVector(separators);
+   {  Vector<Integer> list=getIntVector(separators);
       int[] array=new int[list.size()];
       for (int i=0; i<list.size(); i++) array[i]=((Integer)list.elementAt(i)).intValue();
       return array;
    }
    /** Gets all integers */
    public int[] getIntArray()
-   {  Vector list=getIntVector();
+   {  Vector<Integer> list=getIntVector();
       int[] array=new int[list.size()];
       for (int i=0; i<list.size(); i++) array[i]=((Integer)list.elementAt(i)).intValue();
       return array;
    }
    /** Gets all strings of chars separated by any char belonging to <i>separators</i> */
-   public Vector getWordVector(char[] separators)
-   {  Vector list=new Vector();
+   public Vector<String> getWordVector(char[] separators)
+   {  Vector<String> list=new Vector<String>();
       do { list.addElement(getWord(separators)); } while (hasMore());
       return list;
    }
    /** Gets all strings of chars separated by any char belonging to <i>separators</i> */
    public String[] getWordArray(char[] separators)
-   {  Vector list=getWordVector(separators);
+   {  Vector<String> list=getWordVector(separators);
       String[] array=new String[list.size()];
       for (int i=0; i<list.size(); i++) array[i]=(String)list.elementAt(i);
       return array;
    }
    /** Gets all strings */
-   public Vector getStringVector()
-   {  Vector list=new Vector();
+   public Vector<String> getStringVector()
+   {  Vector<String> list=new Vector<String>();
       do { list.addElement(getString()); } while (hasMore());
       return list;
    }
    /** Gets all string */
    public String[] getStringArray()
-   {  Vector list=getStringVector();
+   {  Vector<String> list=getStringVector();
       String[] array=new String[list.size()];
       for (int i=0; i<list.size(); i++) array[i]=(String)list.elementAt(i);
       return array;

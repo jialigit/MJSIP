@@ -25,12 +25,17 @@ package org.zoolu.sip.provider;
 
 
 
-import org.zoolu.net.*;
-import org.zoolu.sip.message.Message;
-import org.zoolu.tools.*;
-import java.util.Hashtable;
-import java.util.Enumeration;
 import java.io.IOException;
+import java.util.Enumeration;
+import java.util.Hashtable;
+
+import org.zoolu.net.IpAddress;
+import org.zoolu.net.TcpServer;
+import org.zoolu.net.TcpServerListener;
+import org.zoolu.net.TcpSocket;
+import org.zoolu.sip.message.Message;
+import org.zoolu.tools.ExceptionPrinter;
+import org.zoolu.tools.Log;
 
 
 
@@ -45,7 +50,7 @@ abstract class ConnectedTransport implements Transport, TcpServerListener, Trans
    int nmax_connections=0;
 
    /** Table of active connections, as table:TransportConnId-->TransportConn */
-   Hashtable connections=null;
+   Hashtable<TransportConnId, TransportConn> connections=null;
 
    /** Transport listener */
    TransportListener listener;   
@@ -57,7 +62,7 @@ abstract class ConnectedTransport implements Transport, TcpServerListener, Trans
    public ConnectedTransport(int local_port, int nmax_connections, Log log) throws IOException
    {  this.nmax_connections=nmax_connections;
       this.log=log;
-      connections=new Hashtable();
+      connections=new Hashtable<TransportConnId, TransportConn>();
    }
 
 
@@ -142,7 +147,7 @@ abstract class ConnectedTransport implements Transport, TcpServerListener, Trans
    {  // close all connections
       if (connections!=null)
       {  printLog("connections are going down",Log.LEVEL_LOWER);
-         for (Enumeration e=connections.elements(); e.hasMoreElements(); )
+         for (Enumeration<TransportConn> e=connections.elements(); e.hasMoreElements(); )
          {  TransportConn c=(TransportConn)e.nextElement();
             c.halt();
          }
@@ -193,7 +198,7 @@ abstract class ConnectedTransport implements Transport, TcpServerListener, Trans
          printLog("reached the maximum number of connection: removing the older unused connection",Log.LEVEL_HIGH);
          long older_time=System.currentTimeMillis();
          TransportConnId older_id=null;
-         for (Enumeration e=connections.elements(); e.hasMoreElements(); )
+         for (Enumeration<TransportConn> e=connections.elements(); e.hasMoreElements(); )
          {  TransportConn co=(TransportConn)e.nextElement();
             if (co.getLastTimeMillis()<older_time) older_id=new TransportConnId(co);
          }
@@ -204,7 +209,7 @@ abstract class ConnectedTransport implements Transport, TcpServerListener, Trans
       conn=(TransportConn)connections.get(conn_id);
       // DEBUG log:
       printLog("active connenctions:",Log.LEVEL_LOW);
-      for (Enumeration e=connections.keys(); e.hasMoreElements(); )
+      for (Enumeration<TransportConnId> e=connections.keys(); e.hasMoreElements(); )
       {  TransportConnId id=(TransportConnId)e.nextElement();
          printLog("conn-id="+id+": "+((TransportConn)connections.get(id)).toString(),Log.LEVEL_LOW);
       }
@@ -219,7 +224,7 @@ abstract class ConnectedTransport implements Transport, TcpServerListener, Trans
          connections.remove(conn_id);
          // DEBUG log:
          printLog("active connenctions:",Log.LEVEL_LOW);
-         for (Enumeration e=connections.elements(); e.hasMoreElements(); )
+         for (Enumeration<TransportConn> e=connections.elements(); e.hasMoreElements(); )
          {  TransportConn co=(TransportConn)e.nextElement();
             printLog("conn "+co.toString(),Log.LEVEL_LOW);
          }

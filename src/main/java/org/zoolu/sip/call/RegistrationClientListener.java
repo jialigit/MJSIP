@@ -2,7 +2,6 @@ package org.zoolu.sip.call;
 
 
 import org.zoolu.sip.address.NameAddress;
-import org.zoolu.sip.message.Message;
 
 
 /** Listener of RegistrationClient */

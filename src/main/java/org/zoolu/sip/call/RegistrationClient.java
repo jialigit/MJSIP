@@ -22,22 +22,33 @@
 package org.zoolu.sip.call;
 
 
-import org.zoolu.net.SocketAddress;
-import org.zoolu.sip.address.*;
-import org.zoolu.sip.provider.SipStack;
-import org.zoolu.sip.provider.SipProvider;
+import java.util.Vector;
+
+import org.zoolu.sip.address.NameAddress;
+import org.zoolu.sip.address.SipURL;
+import org.zoolu.sip.authentication.DigestAuthentication;
 //import org.zoolu.sip.provider.SipKeepAlive;
-import org.zoolu.sip.header.*;
-import org.zoolu.sip.message.*;
+import org.zoolu.sip.header.AuthorizationHeader;
+import org.zoolu.sip.header.CSeqHeader;
+import org.zoolu.sip.header.ContactHeader;
+import org.zoolu.sip.header.ExpiresHeader;
+import org.zoolu.sip.header.Header;
+import org.zoolu.sip.header.ProxyAuthenticateHeader;
+import org.zoolu.sip.header.ProxyAuthorizationHeader;
+import org.zoolu.sip.header.StatusLine;
+import org.zoolu.sip.header.ViaHeader;
+import org.zoolu.sip.header.WwwAuthenticateHeader;
+import org.zoolu.sip.message.Message;
+import org.zoolu.sip.message.MessageFactory;
+import org.zoolu.sip.message.SipMethods;
+import org.zoolu.sip.provider.SipProvider;
+import org.zoolu.sip.provider.SipStack;
 import org.zoolu.sip.transaction.TransactionClient;
 import org.zoolu.sip.transaction.TransactionClientListener;
-import org.zoolu.sip.authentication.DigestAuthentication;
+import org.zoolu.tools.ExceptionPrinter;
+import org.zoolu.tools.Log;
 import org.zoolu.tools.Timer;
 import org.zoolu.tools.TimerListener;
-import org.zoolu.tools.Log;
-import org.zoolu.tools.ExceptionPrinter;
-
-import java.util.Vector;
 
 
 /** RegistrationClient does register (one time or periodically)

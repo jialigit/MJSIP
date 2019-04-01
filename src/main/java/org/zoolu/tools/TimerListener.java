@@ -23,8 +23,6 @@
 
 package org.zoolu.tools;
 
-import org.zoolu.sdp.SessionDescriptor;
-
 /** Listens for a Timer events. */
 public interface TimerListener
 {

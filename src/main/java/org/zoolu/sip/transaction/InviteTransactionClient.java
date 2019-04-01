@@ -107,7 +107,6 @@ public class InviteTransactionClient extends TransactionClient {
 				}
 				if (transaction_listener != null)
 					transaction_listener.onTransProvisionalResponse(this, msg);
-				// TODO reply with prack if Rseq is found
 				return;
 			}
 			if (code >= 300 && code < 700

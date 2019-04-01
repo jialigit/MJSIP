@@ -25,11 +25,10 @@ package org.zoolu.tools;
 
 
 
-import java.util.Hashtable;
 import java.util.Enumeration;
-import java.util.Vector;
+import java.util.Hashtable;
 
-
+// TODO, seems to be unnecessary, remove
 
 /** MonitoredObject is the base class for all objects that have to be monitored.
   * It keeps trace of the number of instances allocated into the heap.
@@ -127,7 +126,7 @@ public class MonitoredObject
    /** Prints dump. */
    public synchronized static String getDump()
    {  String dump="";
-      for (Enumeration e=class_occurences.keys(); e.hasMoreElements(); )
+      for (Enumeration<String> e=class_occurences.keys(); e.hasMoreElements(); )
       {  String name=(String)e.nextElement();
          Long counter=(Long)class_occurences.get(name);
          dump+=name+": "+counter+"\r\n";
@@ -139,7 +138,12 @@ public class MonitoredObject
    /** MonitoredObjectException. */
    public class MonitoredObjectException extends Exception
    {  
-      /* Creates a new MonitoredObjectException. */
+      /**
+	 * 
+	 */
+	private static final long serialVersionUID = -2518926016760989068L;
+
+	/* Creates a new MonitoredObjectException. */
       public MonitoredObjectException(String name)
       {  super(name);
       }

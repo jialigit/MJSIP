@@ -73,17 +73,19 @@ public class Call extends org.zoolu.tools.MonitoredObject implements InviteDialo
    /** The call listener */
    CallListener listener;
 
+   /** Call status change listener */
+   CallStatusChangeListener cscl;
    
    /** Internal call state. */
    protected int status;
    
  
    
-   protected static final int C_IDLE=0;   
-   protected static final int C_INCOMING=1;
-   protected static final int C_OUTGOING=2;
-   protected static final int C_ACTIVE=6;
-   protected static final int C_CLOSED=9;
+   public static final int C_IDLE=0;   
+   public static final int C_INCOMING=1;
+   public static final int C_OUTGOING=2;
+   public static final int C_ACTIVE=6;
+   public static final int C_CLOSED=9;
       
    /** Gets the dialog state */
    public String getStatus()
@@ -101,6 +103,8 @@ public class Call extends org.zoolu.tools.MonitoredObject implements InviteDialo
    protected void changeStatus(int newstatus)
    {  status=newstatus;
       printLog("changed call state: "+getStatus(),Log.LEVEL_MEDIUM);
+      if(cscl!=null)
+    	  cscl.callStatusChanged(this,status);
    }
 
    /** Whether the call state is equal to <i>st</i> */
@@ -163,6 +167,13 @@ public class Call extends org.zoolu.tools.MonitoredObject implements InviteDialo
       changeStatus(C_IDLE);
    }
 
+   /** sets the status change listener 
+    *  @param cscl the call status change listener
+    */
+   public void setStatusChangeListener(CallStatusChangeListener cscl) {
+	   this.cscl=cscl;
+   }
+   
    /** Waits for an incoming call */
    public void listen()
    {  dialog=new InviteDialog(sip_provider,this);

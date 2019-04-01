@@ -23,10 +23,6 @@
 
 package org.zoolu.sip.header;
 
-
-import org.zoolu.tools.Parser;
-
-
 /** SIP Header Subject.
   */
 public class SubjectHeader extends Header

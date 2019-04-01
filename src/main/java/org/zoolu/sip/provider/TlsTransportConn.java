@@ -24,9 +24,10 @@
 package org.zoolu.sip.provider;
 
 
-import org.zoolu.net.*;
-import org.zoolu.sip.message.Message;
 import java.io.IOException;
+
+import org.zoolu.net.IpAddress;
+import org.zoolu.net.TcpSocket;
 
 
 /** TlsTransportConn provides a TLS trasport service for SIP.

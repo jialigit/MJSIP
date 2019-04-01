@@ -22,7 +22,8 @@
 package org.zoolu.tools;
 
 
-import java.io.*;
+import java.io.IOException;
+import java.io.OutputStream;
 
 
 /** PipeOutputStream is an OutputStream that can be used to write into a Pipe.

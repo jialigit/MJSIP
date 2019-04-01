@@ -22,7 +22,8 @@
 package org.zoolu.tools;
 
 
-import java.io.*;
+import java.io.IOException;
+import java.io.InputStream;
 
 
 /** PipeInputStream is an InputStream that can be used to read from a Pipe.

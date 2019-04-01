@@ -24,11 +24,11 @@
 package org.zoolu.net;
 
 
-import org.zoolu.tools.Timer;
-import org.zoolu.tools.TimerListener;
-
 import java.net.DatagramSocket;
 import java.util.Vector;
+
+import org.zoolu.tools.Timer;
+import org.zoolu.tools.TimerListener;
 
 
 /** OutputRegulatedUdpSocket provides a shaped UDP transport protocol.

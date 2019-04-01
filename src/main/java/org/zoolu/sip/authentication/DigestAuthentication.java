@@ -5,9 +5,9 @@ import org.zoolu.sip.header.AuthenticationHeader;
 import org.zoolu.sip.header.AuthorizationHeader;
 import org.zoolu.sip.header.ProxyAuthorizationHeader;
 import org.zoolu.sip.header.WwwAuthenticateHeader;
+import org.zoolu.tools.BinTools;
 import org.zoolu.tools.MD5;
 import org.zoolu.tools.Random;
-import org.zoolu.tools.BinTools;
 
 
 /** The HTTP Digest Authentication as defined in RFC2617.

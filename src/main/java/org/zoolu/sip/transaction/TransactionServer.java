@@ -24,12 +24,14 @@
 package org.zoolu.sip.transaction;
 
 
-import org.zoolu.tools.Timer;
-import org.zoolu.tools.TimerListener;
-import org.zoolu.sip.address.SipURL;
-import org.zoolu.sip.provider.*;
-import org.zoolu.sip.message.*;
+import org.zoolu.sip.message.Message;
+import org.zoolu.sip.message.MessageFactory;
+import org.zoolu.sip.provider.SipProvider;
+import org.zoolu.sip.provider.SipStack;
+import org.zoolu.sip.provider.TransactionId;
+import org.zoolu.sip.provider.TransportConnId;
 import org.zoolu.tools.Log;
+import org.zoolu.tools.Timer;
 
 
 /** Generic server transaction as defined in RFC 3261 (Section 17.2.2).
@@ -50,7 +52,7 @@ public class TransactionServer extends Transaction
    Timer clearing_to;
 
 
-   // ************************** Costructors **************************
+   // ************************** Constructors **************************
 
    /** Creates a new TransactionServer. */
    protected TransactionServer(SipProvider sip_provider)

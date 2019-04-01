@@ -24,11 +24,28 @@
 package org.zoolu.sip.dialog;
 
 
-import org.zoolu.sip.address.*;
-import org.zoolu.sip.transaction.*;
-import org.zoolu.sip.message.*;
-import org.zoolu.sip.header.*;
-import org.zoolu.sip.provider.*;
+import org.zoolu.sip.address.NameAddress;
+import org.zoolu.sip.address.SipURL;
+import org.zoolu.sip.header.ContactHeader;
+import org.zoolu.sip.header.RecordRouteHeader;
+import org.zoolu.sip.header.StatusLine;
+import org.zoolu.sip.message.Message;
+import org.zoolu.sip.message.MessageFactory;
+import org.zoolu.sip.message.SipMethods;
+import org.zoolu.sip.message.SipResponses;
+import org.zoolu.sip.provider.SipProvider;
+import org.zoolu.sip.provider.SipProviderListener;
+import org.zoolu.sip.provider.SipStack;
+import org.zoolu.sip.provider.TransportConnId;
+import org.zoolu.sip.transaction.AckTransactionClient;
+import org.zoolu.sip.transaction.AckTransactionServer;
+import org.zoolu.sip.transaction.AckTransactionServerListener;
+import org.zoolu.sip.transaction.InviteTransactionClient;
+import org.zoolu.sip.transaction.InviteTransactionServer;
+import org.zoolu.sip.transaction.InviteTransactionServerListener;
+import org.zoolu.sip.transaction.TransactionClient;
+import org.zoolu.sip.transaction.TransactionClientListener;
+import org.zoolu.sip.transaction.TransactionServer;
 import org.zoolu.tools.Log;
 
 
@@ -575,6 +592,14 @@ public class InviteDialog extends Dialog implements TransactionClientListener, I
      * For INVITE transaction it fires <i>onFailureResponse(this,code,reason,body,msg)</i>. */
    public void onTransProvisionalResponse(TransactionClient tc, Message msg)
    {  printLog("inside onTransProvisionalResponse(tc,mdg)",Log.LEVEL_LOW);
+	if(msg.hasRSeqHeader()) {
+		printLog("### missing PRACK treatment",Log.LEVEL_HIGH);
+		Message prack=MessageFactory.createPrack (this, msg);
+		SipProvider sp = tc.getSipProvider();
+		// TODO, send via right channel
+		sp.sendMessage(prack);	
+	}
+
       if (tc.getTransactionMethod().equals(SipMethods.INVITE))
       {  StatusLine statusline=msg.getStatusLine();
          if (listener!=null) listener.onDlgInviteProvisionalResponse(this,statusline.getCode(),statusline.getReason(),msg.getBody(),msg);
@@ -651,8 +676,7 @@ public class InviteDialog extends Dialog implements TransactionClientListener, I
          {  if (listener!=null) listener.onDlgReInviteSuccessResponse(this,code,statusline.getReason(),msg.getBody(),msg);
          }
       }
-      else
-      if (tc.getTransactionMethod().equals(SipMethods.BYE))
+      else if (tc.getTransactionMethod().equals(SipMethods.BYE))
       {  if (!verifyStatus(statusIs(D_BYEING))) return;
          StatusLine statusline=msg.getStatusLine();
          int code=statusline.getCode();
@@ -660,6 +684,8 @@ public class InviteDialog extends Dialog implements TransactionClientListener, I
          changeStatus(D_CLOSE);
          if (listener!=null) listener.onDlgByeSuccessResponse(this,code,statusline.getReason(),msg);
          if (listener!=null) listener.onDlgClosed(this);         
+      } else {
+    	  System.out.printf("got something else %s\n", tc.getTransactionMethod());
       }
    }   
 

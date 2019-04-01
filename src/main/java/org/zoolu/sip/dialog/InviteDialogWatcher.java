@@ -24,8 +24,11 @@
 package org.zoolu.sip.dialog;
 
 
-import org.zoolu.sip.provider.*;
-import org.zoolu.sip.message.*;
+import org.zoolu.sip.message.Message;
+import org.zoolu.sip.message.SipMethods;
+import org.zoolu.sip.provider.MethodId;
+import org.zoolu.sip.provider.SipProvider;
+import org.zoolu.sip.provider.SipProviderListener;
 
 
 /** InviteDialogWatcher listens for new incoming invite requests that create an InviteDialog.

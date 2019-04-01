@@ -24,7 +24,6 @@
 package org.zoolu.net;
 
 
-import java.io.IOException;
 import java.io.InterruptedIOException;
 
 

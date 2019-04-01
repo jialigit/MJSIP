@@ -27,7 +27,7 @@ package org.zoolu.sip.header;
 
 
 /** SIP Header Supported */
-public class SupportedHeader extends OptionHeader
+public class SupportedHeader extends ListHeader
 {
    public SupportedHeader(String option)
    {  super(SipHeaders.Supported,option);

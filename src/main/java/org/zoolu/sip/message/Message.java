@@ -24,16 +24,16 @@
 package org.zoolu.sip.message;
 
 
+import org.zoolu.net.UdpPacket;
+import org.zoolu.sip.header.AllowEventsHeader;
+import org.zoolu.sip.header.EventHeader;
 import org.zoolu.sip.header.Header;
-import org.zoolu.sip.header.MultipleHeader;
+import org.zoolu.sip.header.RSeqHeader;
 import org.zoolu.sip.header.ReferToHeader;
 import org.zoolu.sip.header.ReferredByHeader;
 import org.zoolu.sip.header.ReplacesHeader;
-import org.zoolu.sip.header.EventHeader;
-import org.zoolu.sip.header.AllowEventsHeader;
-import org.zoolu.sip.header.SubscriptionStateHeader;
 import org.zoolu.sip.header.SipHeaders;
-import org.zoolu.net.UdpPacket;
+import org.zoolu.sip.header.SubscriptionStateHeader;
 
 
 /** Class Message extends class sip.message.BaseMessage adding some SIP extensions.
@@ -227,5 +227,28 @@ public class Message extends org.zoolu.sip.message.BaseMessage
    public void removeSubscriptionStateHeader() 
    {  removeHeader(SipHeaders.Subscription_State);
    }
+   
+   /** Whether Message has RSeq Header */
+   public boolean hasRSeqHeader()
+   {
+	   return hasHeader(SipHeaders.RSeq);
+   }
+   /** Gets RSeqHeader of Message. */
+   public RSeqHeader getRSeqHeader()
+   {
+	   Header h=getHeader(SipHeaders.RSeq);
+	   if(h==null) return null;
+	   return new RSeqHeader(h);
+   }
+   /** Sets RSeqHeader of Message. */
+   public void setRSeqHeader(RSeqHeader rsh) {
+	   setHeader(rsh);
+   }
+   /** Removes RSeqHeader from Message. */
+   public void removeRSeqHeader() {
+	   removeHeader(SipHeaders.RSeq);
+   }
+   
 
+   
 }

@@ -60,5 +60,16 @@ public class SipHeaders extends BaseSipHeaders
    public static final String Subscription_State="Subscription-State";
    /** Whether <i>str</i> is an Subscription_State field */
    public static boolean isSubscriptionState(String str) { return same(str,Subscription_State); }
-
+   
+   /** String "RSeq" */
+   public static final String RSeq="RSeq";
+   /** Whether <i>str</i> is "RSeq" */
+   public static boolean isRSeq(String str) { return same(str,RSeq); }
+   
+   /** String "RAck" */
+   public static final String RAck="RAck";
+   /** Whether <i>str</i> is "RAck" */
+   public static boolean isRAck(String str) { return same(str,RAck); }
+   
+   
 }

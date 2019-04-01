@@ -27,7 +27,7 @@ package org.zoolu.sip.header;
 
 
 /** SIP Header Require */
-public class RequireHeader extends OptionHeader
+public class RequireHeader extends ListHeader
 {
    public RequireHeader(String option)
    {  super(SipHeaders.Require,option);

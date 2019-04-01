@@ -23,10 +23,6 @@
 
 package org.zoolu.sdp;
 
-
-import org.zoolu.tools.Parser;
-
-
 /** SDP key field.
   * <p>
   * <BLOCKQUOTE><PRE>

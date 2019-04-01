@@ -22,12 +22,9 @@
 package org.zoolu.sip.provider;
 
 
-import org.zoolu.net.*;
+import org.zoolu.net.SocketAddress;
+import org.zoolu.net.UdpKeepAlive;
 import org.zoolu.sip.message.Message;
-
-import org.zoolu.tools.Timer;
-import org.zoolu.tools.TimerListener;
-import java.util.Date;
 
 
 /** SipKeepAlive keeps up the connection up toward a target SIP node

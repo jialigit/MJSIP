@@ -23,8 +23,6 @@
 
 package org.zoolu.tools;
 
-
-
 /** Base64 encoder and decoder.
   * It can be used for base64-encoding a byte array and/or
   * for base64-decoding a base64 string.
@@ -185,6 +183,7 @@ public class Base64
    // ******************************* MAIN *******************************
 
    /** Main method. */
+   /*
    public static void main (String[] args) 
    {
       if (args[0].equals("-perf"))
@@ -197,17 +196,17 @@ public class Base64
          {  long start=System.currentTimeMillis();
             
             //String base64encoded=(new sun.misc.BASE64Encoder()).encode(cleartext);
-            Class base64encoder_class=Class.forName("sun.misc.BASE64Encoder");
-            java.lang.reflect.Constructor base64encoder_constructor=base64encoder_class.getConstructor(null);
+            Class<?> base64encoder_class=Class.forName("sun.misc.BASE64Encoder");
+            Constructor<?> base64encoder_constructor=base64encoder_class.getConstructor();
             java.lang.reflect.Method encode=base64encoder_class.getMethod("encode",new Class[]{ byte[].class });
-            String base64encoded=(String)encode.invoke(base64encoder_constructor.newInstance(null),new Object[]{ cleartext });
+            String base64encoded=(String)encode.invoke(base64encoder_constructor.newInstance(),new Object[]{ cleartext });
             //
             System.out.println("base64encoded: sun's time: "+(System.currentTimeMillis()-start));
 
             start=System.currentTimeMillis();
             //byte[] base64decoded=(new sun.misc.BASE64Decoder()).decodeBuffer(base64encoded);
             Class base64decoder_class=Class.forName("sun.misc.BASE64Decoder");
-            java.lang.reflect.Constructor base64decoder_constructor=base64decoder_class.getConstructor(null);
+            java.lang.reflect.Constructor<?> base64decoder_constructor=base64decoder_class.getConstructor();
             java.lang.reflect.Method decode=base64decoder_class.getMethod("decodeBuffer",new Class[]{ String.class });
             byte[] base64decoded=(byte[])decode.invoke(base64decoder_constructor.newInstance(null),new Object[]{ base64encoded });
             //
@@ -244,15 +243,7 @@ public class Base64
          byte[] base64decoded=Base64.decode(base64encoded); 
          System.out.println("base64decoded: "+new String(base64decoded));      
             
-         /*try
-         {  //base64encoded=(new sun.misc.BASE64Encoder()).encode(cleartext);
-            //System.out.println("sun's base64encoded: "+base64encoded);
-            base64decoded=(new sun.misc.BASE64Decoder()).decodeBuffer(base64encoded);
-            System.out.println("sun's base64decoded: "+new String(base64decoded));
-         }
-         catch (Exception e)
-         {  e.printStackTrace();
-         }*/
       }
    }
+   */
 }

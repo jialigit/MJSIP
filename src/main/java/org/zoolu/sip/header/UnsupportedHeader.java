@@ -26,7 +26,8 @@ package org.zoolu.sip.header;
 
 
 /** SIP Header Unsupported */
-public class UnsupportedHeader extends OptionHeader
+//public class UnsupportedHeader extends OptionHeader
+public class UnsupportedHeader extends Header
 {
    public UnsupportedHeader(String option)
    {  super(SipHeaders.Unsupported,option);

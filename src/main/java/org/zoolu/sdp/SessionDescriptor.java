@@ -25,12 +25,6 @@ package org.zoolu.sdp;
 
 
 import java.util.Vector;
-import java.util.Enumeration;
-//PersonalJava
-//import java.util.HashSet;
-//import java.util.Iterator;
-import org.zoolu.tools.HashSet;
-import org.zoolu.tools.Iterator;
 
 
 /** Class SessionDescriptor handles SIP message bodys formatted according to

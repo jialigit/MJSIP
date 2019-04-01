@@ -25,11 +25,11 @@ package org.zoolu.tools;
 
 
 
+import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.Vector;
-import java.util.Enumeration;
 
-
+// TODO remove MultiTable
 
 /** MultiTable (multiple-values table) is a one-to-many table.
   * A MultiTable maps a key to a set (actually Vector) of objects.

@@ -24,8 +24,9 @@
 package org.zoolu.sip.header;
 
 
-import org.zoolu.tools.Parser;
 import java.util.Vector;
+
+import org.zoolu.tools.Parser;
 
 
 /** Generic SIP Header containing a list of tokens (Strings). */
@@ -40,8 +41,8 @@ public abstract class ListHeader extends Header
    }
 
    /** Gets list of tokens (as Vector of Strings). */
-   public Vector getElements()
-   {  Vector elements=new Vector();
+   public Vector<String> getElements()
+   {  Vector<String> elements=new Vector<String>();
       Parser par=new Parser(value);
       char[] delim={ ',' };
       while (par.hasMore())
@@ -53,7 +54,7 @@ public abstract class ListHeader extends Header
    }
 
    /** Sets the list of tokens. */
-   public void setElements(Vector elements)
+   public void setElements(Vector<String> elements)
    {  StringBuffer sb=new StringBuffer();
       for (int i=0; i<elements.size(); i++)
       {  if (i>0) sb.append(", "); 

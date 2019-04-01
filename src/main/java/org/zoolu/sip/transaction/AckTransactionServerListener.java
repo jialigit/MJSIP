@@ -23,10 +23,6 @@
 
 package org.zoolu.sip.transaction;
 
-
-import org.zoolu.sip.message.Message;
-
-
 /** An AckTransactionServerListener listens for AckTransactionServer events.
   */
 public interface AckTransactionServerListener

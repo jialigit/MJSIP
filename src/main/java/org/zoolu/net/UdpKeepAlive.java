@@ -21,12 +21,6 @@
 
 package org.zoolu.net;
 
-
-import org.zoolu.tools.Timer;
-import org.zoolu.tools.TimerListener;
-import java.util.Date;
-
-
 /** UdpKeepAlive keeps up the connection toward a target node
   * (e.g. toward the seriving proxy, gateway, or remote UAS).
   * It periodically sends keep-alive tokens in order to refresh NAT timeouts

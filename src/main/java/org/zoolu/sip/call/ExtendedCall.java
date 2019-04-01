@@ -24,14 +24,13 @@
 package org.zoolu.sip.call;
 
 
-import org.zoolu.sip.provider.*;
-import org.zoolu.sip.message.*;
-import org.zoolu.sip.dialog.*;
+import org.zoolu.sip.address.NameAddress;
+import org.zoolu.sip.dialog.ExtendedInviteDialog;
+import org.zoolu.sip.dialog.ExtendedInviteDialogListener;
 import org.zoolu.sip.header.StatusLine;
-import org.zoolu.sip.address.*;
+import org.zoolu.sip.message.Message;
+import org.zoolu.sip.provider.SipProvider;
 import org.zoolu.tools.Log;
-import org.zoolu.sdp.*;
-import java.util.Vector;
 
 
 /** Class ExtendedCall implements a SIP call.

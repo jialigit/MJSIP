@@ -24,9 +24,11 @@
 package org.zoolu.sip.transaction;
 
 
-import org.zoolu.sip.provider.*;
-import org.zoolu.sip.message.*;
 //import org.zoolu.tools.LogLevel;
+import org.zoolu.sip.message.Message;
+import org.zoolu.sip.provider.MethodId;
+import org.zoolu.sip.provider.SipProvider;
+import org.zoolu.sip.provider.SipProviderListener;
 
 
 /** TransactionServerWatcher listens for new incoming transaction requests.

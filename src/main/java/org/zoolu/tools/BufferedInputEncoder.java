@@ -22,7 +22,8 @@
 package org.zoolu.tools;
 
 
-import java.io.*;
+import java.io.IOException;
+import java.io.InputStream;
 
 
 /** Buffered InputStream performing InputStream encoding.

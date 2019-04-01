@@ -24,8 +24,9 @@
 package org.zoolu.tools;
 
 
-import java.io.*;
-import org.zoolu.tools.Random;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 
 
 /** OTP (One Time Pad) encryption algorithm based on MD5 hash function.

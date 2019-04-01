@@ -59,9 +59,13 @@ public class SipMethods extends BaseSipMethods
    /** Whether <i>str</i> is PUBLISH */
    public static boolean isPublish(String str) { return same(str,PUBLISH); }
 
+   /** String "PRACK" for method PRACK */
+   public static final String PRACK="PRACK";
+   /** Whether <i>str</i> is PRACK */
+   public static boolean isPrack(String str) {return same(str,PRACK); }
 
    /** Array of all methods ( standard (RFC3261) + new (RFC3428,..) ) */
-   public static final String[] methods={ INVITE,ACK,CANCEL,BYE,INFO,OPTIONS,REGISTER,UPDATE,SUBSCRIBE,NOTIFY,MESSAGE,REFER,PUBLISH };
+   public static final String[] methods={ INVITE,ACK,CANCEL,BYE,INFO,OPTIONS,REGISTER,UPDATE,SUBSCRIBE,NOTIFY,MESSAGE,REFER,PUBLISH,PRACK };
 
    /** Array of all methods that create a dialog */
    public static final String[] dialog_methods={ INVITE,SUBSCRIBE };

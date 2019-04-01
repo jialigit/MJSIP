@@ -25,14 +25,12 @@ package org.zoolu.net;
 
 
 
+import java.util.Hashtable;
+import java.util.Vector;
+
 import org.zoolu.tools.BinTools;
 import org.zoolu.tools.Timer;
 import org.zoolu.tools.TimerListener;
-
-import java.util.Hashtable;
-import java.util.Vector;
-import java.util.Date;
-import java.util.Calendar;
 
 
 
@@ -163,13 +161,13 @@ public class JumboUdpSocket extends UdpSocket
 class Cache implements TimerListener
 {
    /** Table:(Integer)pkt_id-->(Vector<JumboPAcket>)packet_fragments */
-   Hashtable table_fragments=new Hashtable();
+   Hashtable<Integer, Vector<?>> table_fragments=new Hashtable<Integer, Vector<?>>();
 
    /** Table:(Integer)pkt_id-->Timers */
-   Hashtable table_timers=new Hashtable();
+   Hashtable<Integer, Timer> table_timers=new Hashtable<Integer, Timer>();
 
    /** Table:Timer-->(Integer)pkt_id */
-   Hashtable table_ids=new Hashtable();
+   Hashtable<Timer, Integer> table_ids=new Hashtable<Timer, Integer>();
    
    
    /** Creates a new Cache. */
