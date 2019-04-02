@@ -596,7 +596,7 @@ public class InviteDialog extends Dialog implements TransactionClientListener, I
 		printLog("### missing PRACK treatment",Log.LEVEL_HIGH);
 		Message prack=MessageFactory.createPrack (this, msg);
 		SipProvider sp = tc.getSipProvider();
-		// TODO, send via right channel
+		// TODO, send via right channel, may have to implement own listener
 		sp.sendMessage(prack);	
 	}
 

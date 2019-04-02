@@ -141,6 +141,7 @@ public class MessageFactory extends org.zoolu.sip.message.BaseMessageFactory {
 		return req;
 	}
 
+	/** creates a PRACK request as a response to a temporary response with an Rseq header */
 	public static Message createPrack(Dialog dialog, Message msg) {		
 		dialog.incLocalCSeq();
 		Message req=createRequest(dialog, SipMethods.PRACK, null);
